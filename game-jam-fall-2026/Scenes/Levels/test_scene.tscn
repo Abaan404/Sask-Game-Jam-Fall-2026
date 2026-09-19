@@ -11,6 +11,10 @@ size = Vector2(744, 20)
 [node name="Player" parent="." unique_id=1438121118 instance=ExtResource("1_sgftv")]
 position = Vector2(20, -73)
 
+[node name="Player2" parent="." unique_id=2085434168 instance=ExtResource("1_sgftv")]
+position = Vector2(112, -73)
+is_player_2 = true
+
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1178217182]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1542123080]
@@ -19,4 +23,10 @@ shape = SubResource("RectangleShape2D_vnn0b")
 [node name="Sprite2D" type="Sprite2D" parent="StaticBody2D" unique_id=95851146]
 position = Vector2(-0.50001144, -1.5)
 scale = Vector2(5.8515625, 0.1484375)
+texture = ExtResource("2_2u58p")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1113904712]
+visible = false
+position = Vector2(-112.00003, -228)
+scale = Vector2(14.249999, 9.9375)
 texture = ExtResource("2_2u58p")
