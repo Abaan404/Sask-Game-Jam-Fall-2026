@@ -36,7 +36,7 @@ func _physics_process(delta: float) -> void:
 			velocity.y *= gliding_strength
 
 	# Handle jump.
-	jumped = Input.is_action_just_pressed("up") and is_on_floor()
+	jumped = Input.is_action_just_pressed(input_up) and is_on_floor()
 	if jumped:
 		velocity.y = jump
 		

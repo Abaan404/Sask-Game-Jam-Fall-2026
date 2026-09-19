@@ -8,6 +8,7 @@ script = ExtResource("1_ehqfi")
 sprite = NodePath("Sprite2D")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=559184645]
+visible = false
 position = Vector2(0, -17)
 scale = Vector2(0.3945309, 0.26171863)
 texture = ExtResource("2_2cdbr")
