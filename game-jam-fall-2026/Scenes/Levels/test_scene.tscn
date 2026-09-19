@@ -9,8 +9,11 @@ size = Vector2(744, 20)
 
 [node name="TestScene" type="Node2D" unique_id=1565828327]
 
-[node name="Player" parent="." unique_id=1438121118 instance=ExtResource("1_sgftv")]
+[node name="Player" parent="." unique_id=1438121118 node_paths=PackedStringArray("abilities") instance=ExtResource("1_sgftv")]
 position = Vector2(20, -73)
+abilities = [NodePath("GlidingLeaf")]
+
+[node name="GlidingLeaf" parent="Player" unique_id=2085603314 instance=ExtResource("2_dv2c3")]
 
 [node name="Player2" parent="." unique_id=2085434168 instance=ExtResource("1_sgftv")]
 position = Vector2(112, -73)
@@ -26,15 +29,6 @@ position = Vector2(-0.50001144, -1.5)
 scale = Vector2(5.8515625, 0.1484375)
 texture = ExtResource("2_2u58p")
 
-[node name="Player" parent="." unique_id=1438121118 node_paths=PackedStringArray("abilities") instance=ExtResource("1_sgftv")]
-position = Vector2(20, -73)
-speed = 300.0
-jump = -400.0
-gliding = false
-abilities = [NodePath("GlidingLeaf")]
-
-[node name="GlidingLeaf" parent="Player" unique_id=2085603314 node_paths=PackedStringArray("sprite") instance=ExtResource("2_dv2c3")]
-sprite = NodePath("../../StaticBody2D/Sprite2D")
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1113904712]
 visible = false
 position = Vector2(-112.00003, -228)

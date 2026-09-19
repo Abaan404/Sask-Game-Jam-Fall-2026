@@ -3,11 +3,11 @@
 [ext_resource type="Script" uid="uid://cys06o8fjtwrn" path="res://Scripts/GlidingLeaf.gd" id="1_ehqfi"]
 [ext_resource type="Texture2D" uid="uid://dyx0lyhhja2ga" path="res://Assets/icon.svg" id="2_2cdbr"]
 
-[node name="GlidingLeaf" type="Node2D" unique_id=2085603314]
+[node name="GlidingLeaf" type="Node2D" unique_id=2085603314 node_paths=PackedStringArray("sprite")]
 script = ExtResource("1_ehqfi")
+sprite = NodePath("Sprite2D")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=559184645]
-visible = false
 position = Vector2(0, -17)
 scale = Vector2(0.3945309, 0.26171863)
 texture = ExtResource("2_2cdbr")
