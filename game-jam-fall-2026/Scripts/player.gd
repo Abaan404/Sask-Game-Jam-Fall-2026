@@ -6,6 +6,10 @@ extends CharacterBody2D
 
 var camera: Camera2D
 
+var ability1: Ability
+var ability2: Ability
+var ability3: Ability
+
 
 func _ready() -> void:
 	pass
