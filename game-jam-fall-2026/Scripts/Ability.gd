@@ -2,9 +2,13 @@ extends Node
 
 class_name Ability
 
-@export var cooldown_time_ms: float
-@export var is_cooldown: bool
+var player: Player
+var active: bool
+
+var cooldown: bool
 var cooldown_time_ms_counter: float
+@export var cooldown_time_ms: float
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -12,18 +16,27 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	is_cooldown = cooldown_time_ms_counter > 0
+	cooldown = cooldown_time_ms_counter > 0
 
-	if (is_cooldown):
+	if (cooldown):
 		cooldown_time_ms_counter -= delta
 
 func start() -> void:
-	pass
+	active = true
 	
 func stop() -> void:
-	pass
+	active = false
 	
 func trigger() -> void:
 	cooldown_time_ms_counter = cooldown_time_ms
+
 	start()
 	stop()
+	
+func toggle() -> void:
+	cooldown_time_ms_counter = cooldown_time_ms
+
+	if (!active):
+		start()
+	else:
+		stop()

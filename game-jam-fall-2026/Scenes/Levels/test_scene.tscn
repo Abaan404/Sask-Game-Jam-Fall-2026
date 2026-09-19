@@ -2,14 +2,12 @@
 
 [ext_resource type="PackedScene" uid="uid://doop567ni7qgo" path="res://Scenes/Entities/Player.tscn" id="1_sgftv"]
 [ext_resource type="Texture2D" uid="uid://dyx0lyhhja2ga" path="res://Assets/icon.svg" id="2_2u58p"]
+[ext_resource type="PackedScene" uid="uid://cojq50ed4fihc" path="res://Scenes/Abilities/GlidingLeaf.tscn" id="2_dv2c3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vnn0b"]
 size = Vector2(744, 20)
 
 [node name="TestScene" type="Node2D" unique_id=1565828327]
-
-[node name="Player" parent="." unique_id=1438121118 instance=ExtResource("1_sgftv")]
-position = Vector2(20, -73)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1178217182]
 
@@ -20,3 +18,13 @@ shape = SubResource("RectangleShape2D_vnn0b")
 position = Vector2(-0.50001144, -1.5)
 scale = Vector2(5.8515625, 0.1484375)
 texture = ExtResource("2_2u58p")
+
+[node name="Player" parent="." unique_id=1438121118 node_paths=PackedStringArray("abilities") instance=ExtResource("1_sgftv")]
+position = Vector2(20, -73)
+speed = 300.0
+jump = -400.0
+gliding = false
+abilities = [NodePath("GlidingLeaf")]
+
+[node name="GlidingLeaf" parent="Player" unique_id=2085603314 node_paths=PackedStringArray("sprite") instance=ExtResource("2_dv2c3")]
+sprite = NodePath("../../StaticBody2D/Sprite2D")
