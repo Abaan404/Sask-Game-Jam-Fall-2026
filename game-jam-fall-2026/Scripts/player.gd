@@ -4,6 +4,11 @@ extends CharacterBody2D
 @export var speed: float = 300.0
 @export var jump: float = -400.0
 
+var camera: Camera2D
+
+
+func _ready() -> void:
+	pass
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
