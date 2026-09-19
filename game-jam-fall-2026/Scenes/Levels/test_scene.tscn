@@ -3,9 +3,13 @@
 [ext_resource type="PackedScene" uid="uid://doop567ni7qgo" path="res://Scenes/Entities/Player.tscn" id="1_sgftv"]
 [ext_resource type="Texture2D" uid="uid://dyx0lyhhja2ga" path="res://Assets/icon.svg" id="2_2u58p"]
 [ext_resource type="PackedScene" uid="uid://cojq50ed4fihc" path="res://Scenes/Abilities/GlidingLeaf.tscn" id="2_dv2c3"]
+[ext_resource type="PackedScene" uid="uid://jcufhe47v2b3" path="res://Scenes/Abilities/wall_climb.tscn" id="3_a1spv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vnn0b"]
 size = Vector2(744, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yeiif"]
+size = Vector2(20, 386)
 
 [node name="TestScene" type="Node2D" unique_id=1565828327]
 
@@ -15,9 +19,13 @@ abilities = [NodePath("GlidingLeaf")]
 
 [node name="GlidingLeaf" parent="Player" unique_id=2085603314 instance=ExtResource("2_dv2c3")]
 
-[node name="Player2" parent="." unique_id=2085434168 instance=ExtResource("1_sgftv")]
+[node name="Player2" parent="." unique_id=2085434168 node_paths=PackedStringArray("abilities") instance=ExtResource("1_sgftv")]
 position = Vector2(112, -73)
 is_player_2 = true
+abilities = [NodePath("WallClimb")]
+
+[node name="WallClimb" parent="Player2" unique_id=1718363903 instance=ExtResource("3_a1spv")]
+cooldown_time_ms = 0.3
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1178217182]
 
@@ -29,8 +37,26 @@ position = Vector2(-0.50001144, -1.5)
 scale = Vector2(5.8515625, 0.1484375)
 texture = ExtResource("2_2u58p")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1113904712]
-visible = false
-position = Vector2(-112.00003, -228)
-scale = Vector2(14.249999, 9.9375)
+[node name="StaticBody2D2" type="StaticBody2D" parent="." unique_id=353162670]
+position = Vector2(-368, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2" unique_id=1068044395]
+position = Vector2(0, -183)
+shape = SubResource("RectangleShape2D_yeiif")
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D2" unique_id=2085540301]
+position = Vector2(-1.001358e-05, -183)
+scale = Vector2(0.15624984, 3.0156248)
+texture = ExtResource("2_2u58p")
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="." unique_id=246716203]
+position = Vector2(-240, -120)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3" unique_id=1958122223]
+position = Vector2(0, -183)
+shape = SubResource("RectangleShape2D_yeiif")
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D3" unique_id=1554276693]
+position = Vector2(-1.001358e-05, -183)
+scale = Vector2(0.15624984, 3.0156248)
 texture = ExtResource("2_2u58p")
