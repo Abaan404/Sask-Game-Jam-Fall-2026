@@ -1,6 +1,7 @@
 extends CharacterBody2D
-
 class_name Player
+
+@export var camera_transform: RemoteTransform2D
 
 @export var speed: float = 300.0
 @export var jump: float = -400.0
@@ -8,13 +9,22 @@ class_name Player
 @export var gliding: bool = false
 @export var gliding_strength: float = 0.3
 
-var camera: Camera2D
+@export var is_player_2: bool 
+var input_up: String = "up"
+var input_down: String = "down"
+var input_left: String = "left"
+var input_right: String = "right"
 
 @export var abilities: Array[Ability]
 
 func _ready() -> void:
 	for ability in abilities:
 		ability.player = self
+	if is_player_2:
+		input_up += "2"
+		input_down += "2"
+		input_left += "2"
+		input_right +="2"
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
@@ -25,12 +35,12 @@ func _physics_process(delta: float) -> void:
 			velocity.y *= gliding_strength
 
 	# Handle jump.
-	if Input.is_action_just_pressed("up") and is_on_floor():
+	if Input.is_action_just_pressed(input_up) and is_on_floor():
 		velocity.y = jump
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
-	var direction := Input.get_axis("left", "right")
+	var direction := Input.get_axis(input_left, input_right)
 	if direction:
 		velocity.x = direction * speed
 	else:

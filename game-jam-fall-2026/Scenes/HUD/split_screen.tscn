@@ -1,0 +1,58 @@
+[gd_scene format=3 uid="uid://egf4wj2c16tc"]
+
+[ext_resource type="PackedScene" uid="uid://o1fq8x1kg8ev" path="res://Scenes/Levels/test_scene.tscn" id="1_1d5fy"]
+[ext_resource type="Script" uid="uid://b4ak0fe70pwo6" path="res://Scripts/split_screen.gd" id="1_1qg8b"]
+
+[sub_resource type="World3D" id="World3D_1d5fy"]
+
+[node name="SplitScreen" type="Node" unique_id=967448012 node_paths=PackedStringArray("viewport1", "cam1", "viewport2", "cam2", "level_container")]
+script = ExtResource("1_1qg8b")
+viewport1 = NodePath("HBoxContainer/1/View1")
+cam1 = NodePath("HBoxContainer/1/View1/Camera1")
+viewport2 = NodePath("HBoxContainer/2/View2")
+cam2 = NodePath("HBoxContainer/2/View2/Camera2")
+level_container = NodePath("HBoxContainer/1/View1/Level Container")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1677498541]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme_override_constants/separation = 0
+alignment = 1
+
+[node name="1" type="SubViewportContainer" parent="HBoxContainer" unique_id=1382585363]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="View1" type="SubViewport" parent="HBoxContainer/1" unique_id=1355376473]
+world_3d = SubResource("World3D_1d5fy")
+handle_input_locally = false
+size = Vector2i(574, 648)
+render_target_update_mode = 4
+
+[node name="Camera1" type="Camera2D" parent="HBoxContainer/1/View1" unique_id=1990636007]
+
+[node name="Level Container" type="Node2D" parent="HBoxContainer/1/View1" unique_id=1848816721]
+
+[node name="TestScene" parent="HBoxContainer/1/View1/Level Container" unique_id=1565828327 instance=ExtResource("1_1d5fy")]
+
+[node name="ColorRect" type="ColorRect" parent="HBoxContainer" unique_id=1525127316]
+custom_minimum_size = Vector2(2, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+color = Color(0.42821592, 0, 0.0032687036, 1)
+
+[node name="2" type="SubViewportContainer" parent="HBoxContainer" unique_id=195039710]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="View2" type="SubViewport" parent="HBoxContainer/2" unique_id=952388035]
+handle_input_locally = false
+size = Vector2i(574, 648)
+render_target_update_mode = 4
+
+[node name="Camera2" type="Camera2D" parent="HBoxContainer/2/View2" unique_id=1349488191]
