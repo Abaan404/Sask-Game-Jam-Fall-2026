@@ -9,12 +9,24 @@
 [ext_resource type="PackedScene" uid="uid://cypwcxp35mjc0" path="res://Scenes/Abilities/Fruit.tscn" id="4_utwxg"]
 [ext_resource type="PackedScene" uid="uid://c2ancckms2v5" path="res://Scenes/Abilities/Root.tscn" id="6_56hgn"]
 [ext_resource type="PackedScene" uid="uid://bn6fb5xh6lbw1" path="res://Scenes/LevelElements/Pomogranates/Fruit.tscn" id="6_tgibm"]
+[ext_resource type="PackedScene" uid="uid://k13k4b46kfae" path="res://Scenes/Abilities/TogglePlatforms.tscn" id="5_nlmfl"]
+[ext_resource type="PackedScene" uid="uid://ctxkbre0t5vcv" path="res://Scenes/LevelElements/MovingPlatform/moving_platform.tscn" id="6_tgibm"]
+[ext_resource type="PackedScene" uid="uid://c6cm6gftjmnjt" path="res://Scenes/LevelElements/End/LevelEnder.tscn" id="8_utwxg"]
+[ext_resource type="PackedScene" uid="uid://dobybr281q84l" path="res://Scenes/Levels/level1-1.tscn" id="9_56hgn"]
+[ext_resource type="PackedScene" uid="uid://dbunq7b5nb518" path="res://Scenes/LevelElements/SpawnAndKill/death_zone.tscn" id="10_shcqj"]
+[ext_resource type="PackedScene" uid="uid://brr26kwdpn2ar" path="res://Scenes/LevelElements/SpawnAndKill/SpawnPoint.tscn" id="11_4kqls"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vnn0b"]
 size = Vector2(744, 20)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yeiif"]
 size = Vector2(20, 386)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nj3bv"]
+size = Vector2(128, 128)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wt7xm"]
+size = Vector2(1408, 20)
 
 [node name="TestScene" type="Node2D" unique_id=1565828327]
 
@@ -31,18 +43,26 @@ position = Vector2(-28, -72)
 abilities = [NodePath("GlidingLeaf"), NodePath("Pomogranate")]
 
 [node name="Pomogranate" parent="Player" unique_id=459060717 instance=ExtResource("4_utwxg")]
+[node name="Player" parent="." unique_id=1438121118 node_paths=PackedStringArray("respawn_point", "abilities") instance=ExtResource("1_sgftv")]
+position = Vector2(20, -73)
+respawn_point = NodePath("../SpawnPoint")
+abilities = [NodePath("GlidingLeaf")]
 
 [node name="GlidingLeaf" parent="Player" unique_id=2085603314 instance=ExtResource("2_dv2c3")]
 
-[node name="Player2" parent="." unique_id=2085434168 node_paths=PackedStringArray("abilities") instance=ExtResource("1_sgftv")]
+[node name="Player2" parent="." unique_id=2085434168 node_paths=PackedStringArray("respawn_point", "abilities") instance=ExtResource("1_sgftv")]
 position = Vector2(112, -73)
+respawn_point = NodePath("../SpawnPoint2")
 is_player_2 = true
 abilities = [NodePath("WallClimb"), NodePath("PomogranateRoot")]
 
 [node name="PomogranateRoot" parent="Player2" unique_id=821630594 instance=ExtResource("6_56hgn")]
+abilities = [NodePath("WallClimb"), NodePath("TogglePlatforms")]
 
 [node name="WallClimb" parent="Player2" unique_id=1718363903 instance=ExtResource("3_a1spv")]
-cooldown_time_ms = 0.3
+cooldown_time_ms = 0.4
+
+[node name="TogglePlatforms" parent="Player2" unique_id=249809123 instance=ExtResource("5_nlmfl")]
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1178217182]
 
@@ -86,3 +106,30 @@ position = Vector2(120, -184)
 
 [node name="Fruit3" parent="." unique_id=1296464935 instance=ExtResource("6_tgibm")]
 position = Vector2(108, -396)
+[node name="MovingPlatformPath" parent="." unique_id=1910268113 instance=ExtResource("6_tgibm")]
+position = Vector2(0, 88)
+
+[node name="CollisionShape2D" parent="MovingPlatformPath/MovingPlatform" parent_id_path=PackedInt32Array(1910268113, 914076835) index="0" unique_id=969116513]
+shape = SubResource("RectangleShape2D_nj3bv")
+
+[node name="Sprite2D" parent="MovingPlatformPath/MovingPlatform" parent_id_path=PackedInt32Array(1910268113, 914076835) index="1" unique_id=20352624]
+texture = ExtResource("2_2u58p")
+
+[node name="LevelEnder" parent="." unique_id=936052491 instance=ExtResource("8_utwxg")]
+position = Vector2(448, -336)
+next_level = ExtResource("9_56hgn")
+
+[node name="DeathZone" parent="." unique_id=274419522 instance=ExtResource("10_shcqj")]
+
+[node name="CollisionShape2D" parent="DeathZone" index="0" unique_id=716609040]
+position = Vector2(0, 232)
+shape = SubResource("RectangleShape2D_wt7xm")
+
+[node name="SpawnPoint" parent="." unique_id=1559900595 instance=ExtResource("11_4kqls")]
+position = Vector2(-128, -16)
+
+[node name="SpawnPoint2" parent="." unique_id=372896031 instance=ExtResource("11_4kqls")]
+position = Vector2(216, -24)
+
+[editable path="MovingPlatformPath"]
+[editable path="DeathZone"]

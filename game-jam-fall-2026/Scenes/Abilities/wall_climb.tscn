@@ -8,9 +8,10 @@ size = Vector2(50, 48)
 [node name="WallClimb" type="Node2D" unique_id=1718363903 node_paths=PackedStringArray("friction_area")]
 script = ExtResource("1_fyud8")
 friction_area = NodePath("Area2D")
+friction = 0.84
 deccel = 0.0
 wall_bounce = 1.25
-cooldown_time_ms = 0.25
+cooldown_time_ms = 0.35
 
 [node name="Area2D" type="Area2D" parent="." unique_id=34357070]
 

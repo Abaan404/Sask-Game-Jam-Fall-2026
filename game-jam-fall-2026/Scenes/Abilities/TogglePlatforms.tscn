@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://k13k4b46kfae"]
+
+[ext_resource type="Script" uid="uid://cx50v776duqkf" path="res://Scripts/toggle_platforms.gd" id="1_y7oda"]
+
+[node name="TogglePlatforms" type="Node2D" unique_id=249809123]
+script = ExtResource("1_y7oda")

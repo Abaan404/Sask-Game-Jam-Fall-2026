@@ -1,0 +1,86 @@
+[gd_scene format=3 uid="uid://c5r5s1p4aded7"]
+
+[ext_resource type="Script" uid="uid://dnt6ivnshj8vv" path="res://Scripts/menu_button.gd" id="1_7c3he"]
+[ext_resource type="Script" uid="uid://csd1egbilfuqe" path="res://Scripts/level_button.gd" id="2_7c3he"]
+[ext_resource type="PackedScene" uid="uid://dobybr281q84l" path="res://Scenes/Levels/level1-1.tscn" id="3_f1lhc"]
+
+[node name="LevelSelect" type="Control" unique_id=643628324]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Back" type="Button" parent="." unique_id=1653655912]
+layout_mode = 0
+offset_left = 82.0
+offset_top = 582.0
+offset_right = 200.0
+offset_bottom = 635.0
+offset_transform_enabled = true
+offset_transform_position_ratio = Vector2(-0.5, 0)
+theme_override_font_sizes/font_size = 24
+text = "Back
+"
+script = ExtResource("1_7c3he")
+next_scene = "res://Scenes/HUD/Menus/main_menu.tscn"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=2116598410]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -260.0
+offset_top = 122.0
+offset_right = 261.0
+offset_bottom = 244.0
+grow_horizontal = 2
+theme_override_constants/separation = 128
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer" unique_id=1561708770]
+layout_mode = 2
+theme_override_constants/separation = 36
+
+[node name="Button" type="Button" parent="HBoxContainer/VBoxContainer" unique_id=853021172]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Level 1-1"
+script = ExtResource("2_7c3he")
+next_scene = ExtResource("3_f1lhc")
+
+[node name="Button2" type="Button" parent="HBoxContainer/VBoxContainer" unique_id=1052550525]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Level 1-2"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer" unique_id=734662815]
+layout_mode = 2
+theme_override_constants/separation = 36
+
+[node name="Button" type="Button" parent="HBoxContainer/VBoxContainer2" unique_id=370826977]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Level 2-1"
+
+[node name="Button2" type="Button" parent="HBoxContainer/VBoxContainer2" unique_id=136955602]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Level 2-2"
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="HBoxContainer" unique_id=1018211567]
+layout_mode = 2
+theme_override_constants/separation = 36
+
+[node name="Button" type="Button" parent="HBoxContainer/VBoxContainer3" unique_id=764359601]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Level 3-1"
+
+[node name="Button2" type="Button" parent="HBoxContainer/VBoxContainer3" unique_id=312749539]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Level 3-2"
+
+[connection signal="pressed" from="Back" to="Back" method="_on_pressed"]
