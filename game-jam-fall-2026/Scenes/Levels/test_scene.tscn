@@ -7,6 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://jcufhe47v2b3" path="res://Scenes/Abilities/wall_climb.tscn" id="3_a1spv"]
 [ext_resource type="PackedScene" uid="uid://k13k4b46kfae" path="res://Scenes/Abilities/TogglePlatforms.tscn" id="5_nlmfl"]
 [ext_resource type="PackedScene" uid="uid://ctxkbre0t5vcv" path="res://Scenes/LevelElements/MovingPlatform/moving_platform.tscn" id="6_tgibm"]
+[ext_resource type="PackedScene" uid="uid://c6cm6gftjmnjt" path="res://Scenes/LevelElements/End/LevelEnder.tscn" id="8_utwxg"]
+[ext_resource type="PackedScene" uid="uid://dobybr281q84l" path="res://Scenes/Levels/level1-1.tscn" id="9_56hgn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vnn0b"]
 size = Vector2(744, 20)
@@ -81,5 +83,9 @@ shape = SubResource("RectangleShape2D_nj3bv")
 
 [node name="Sprite2D" parent="MovingPlatformPath/MovingPlatform" parent_id_path=PackedInt32Array(1910268113, 914076835) index="1" unique_id=20352624]
 texture = ExtResource("2_2u58p")
+
+[node name="LevelEnder" parent="." unique_id=936052491 instance=ExtResource("8_utwxg")]
+position = Vector2(448, -336)
+next_level = ExtResource("9_56hgn")
 
 [editable path="MovingPlatformPath"]

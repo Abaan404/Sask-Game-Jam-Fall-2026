@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://c6cm6gftjmnjt"]
+
+[ext_resource type="Script" uid="uid://bilnoxxka34yp" path="res://Scripts/level_ender.gd" id="1_1gjv6"]
+[ext_resource type="Texture2D" uid="uid://dyx0lyhhja2ga" path="res://Assets/icon.svg" id="1_nplwk"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nplwk"]
+size = Vector2(36, 130)
+
+[node name="LevelEnder" type="Node2D" unique_id=936052491]
+script = ExtResource("1_1gjv6")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=258552845]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1377818020]
+shape = SubResource("RectangleShape2D_nplwk")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2068824902]
+scale = Vector2(0.265625, 1)
+texture = ExtResource("1_nplwk")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

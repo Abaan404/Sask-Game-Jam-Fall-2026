@@ -25,7 +25,6 @@ func _physics_process(delta: float) -> void:
 		
 		var dir = int(forward)
 		
-		print(dir)
 		pathfollow.progress_ratio = move_toward(pathfollow.progress_ratio, dir, calc_speed)
 		if pathfollow.progress_ratio == dir:
 			moving = false
