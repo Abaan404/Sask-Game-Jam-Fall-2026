@@ -1,12 +1,118 @@
 [gd_scene format=3 uid="uid://doop567ni7qgo"]
 
-[ext_resource type="Texture2D" uid="uid://dyx0lyhhja2ga" path="res://Assets/icon.svg" id="1_3kvya"]
 [ext_resource type="Script" uid="uid://b0vo7b8s3qvsf" path="res://Scripts/player.gd" id="1_v402d"]
+[ext_resource type="Script" uid="uid://bnxcjtcoqr6m" path="res://Scripts/player_animator.gd" id="2_td8ue"]
 [ext_resource type="Texture2D" uid="uid://b24yheumlkkl6" path="res://Assets/orph_idle_1.png" id="3_agccv"]
+[ext_resource type="Texture2D" uid="uid://cy0h4iwifl2gv" path="res://Assets/orph_idle_2.png" id="4_td8ue"]
+[ext_resource type="Texture2D" uid="uid://di8epflj5icn7" path="res://Assets/orph_jump.png" id="5_ynt0t"]
+[ext_resource type="Texture2D" uid="uid://cqey52eqe6wnk" path="res://Assets/orph_run_1.png" id="6_km4ui"]
+[ext_resource type="Texture2D" uid="uid://bnrjgnc46px8p" path="res://Assets/orph_run_2.png" id="7_rsj4h"]
+[ext_resource type="Texture2D" uid="uid://iahey1guubgm" path="res://Assets/eur_jump.png" id="8_0pa8p"]
+[ext_resource type="Texture2D" uid="uid://ccjjeyqsafta0" path="res://Assets/eur_idle_1.png" id="8_km4ui"]
+[ext_resource type="Texture2D" uid="uid://c4vec0ttfkyla" path="res://Assets/eur_idle_2.png" id="9_rsj4h"]
+[ext_resource type="Texture2D" uid="uid://devrl0fbdxvr6" path="res://Assets/eur_wallhang.png" id="11_0hljs"]
+[ext_resource type="Texture2D" uid="uid://dgrd1dxvrdn8n" path="res://Assets/eur_run_1.png" id="12_crkm8"]
+[ext_resource type="Texture2D" uid="uid://dpg1up82dvpey" path="res://Assets/eur_run_2.png" id="13_j230w"]
+[ext_resource type="Texture2D" uid="uid://gyjx2olpyrsh" path="res://Assets/eur_run_3.png" id="14_qkam4"]
+[ext_resource type="Texture2D" uid="uid://bf4samcklsqey" path="res://Assets/eur_run_4.png" id="15_w67ft"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_agccv"]
 radius = 16.0
 height = 92.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_yeiif"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_ynt0t")
+}],
+"loop": 0,
+"name": &"fall",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_agccv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_td8ue")
+}],
+"loop": 1,
+"name": &"idle",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_rsj4h")
+}],
+"loop": 1,
+"name": &"jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_km4ui")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_agccv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_rsj4h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_td8ue")
+}],
+"loop": 1,
+"name": &"run",
+"speed": 6.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_td8ue"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_0pa8p")
+}],
+"loop": 1,
+"name": &"fall",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_km4ui")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_rsj4h")
+}],
+"loop": 1,
+"name": &"idle",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_0hljs")
+}],
+"loop": 1,
+"name": &"jump",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_crkm8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_j230w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_qkam4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_w67ft")
+}],
+"loop": 1,
+"name": &"run",
+"speed": 6.0
+}]
 
 [node name="Player" type="CharacterBody2D" unique_id=1438121118 node_paths=PackedStringArray("camera_transform")]
 script = ExtResource("1_v402d")
@@ -16,14 +122,23 @@ camera_transform = NodePath("CameraTransform")
 position = Vector2(0, -22)
 shape = SubResource("CapsuleShape2D_agccv")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=987778915]
-visible = false
-scale = Vector2(0.375, 0.375)
-texture = ExtResource("1_3kvya")
+[node name="PlayerAnimator" type="Node2D" parent="." unique_id=1991672602 node_paths=PackedStringArray("player", "Orpheus", "Eurydice")]
+script = ExtResource("2_td8ue")
+player = NodePath("..")
+Orpheus = NodePath("OrphSprite")
+Eurydice = NodePath("EurySprite")
 
-[node name="CameraTransform" type="RemoteTransform2D" parent="." unique_id=1982584075]
-
-[node name="Orpheus Sprite" type="Sprite2D" parent="." unique_id=1576425065]
+[node name="OrphSprite" type="AnimatedSprite2D" parent="PlayerAnimator" unique_id=1406786192]
 position = Vector2(0, -31)
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("3_agccv")
+sprite_frames = SubResource("SpriteFrames_yeiif")
+animation = &"jump"
+autoplay = "idle"
+
+[node name="EurySprite" type="AnimatedSprite2D" parent="PlayerAnimator" unique_id=1195828665]
+position = Vector2(0, -31)
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_td8ue")
+animation = &"fall"
+
+[node name="CameraTransform" type="RemoteTransform2D" parent="." unique_id=1982584075]
