@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://cojq50ed4fihc"]
 
-[ext_resource type="Script" uid="uid://cys06o8fjtwrn" path="res://Scripts/GlidingLeaf.gd" id="1_ehqfi"]
+[ext_resource type="Script" uid="uid://cys06o8fjtwrn" path="res://Scripts/GlidingLeaf.gd" id="1_j6adq"]
 [ext_resource type="Texture2D" uid="uid://dyx0lyhhja2ga" path="res://Assets/icon.svg" id="2_2cdbr"]
 
 [node name="GlidingLeaf" type="Node2D" unique_id=2085603314 node_paths=PackedStringArray("sprite")]
-script = ExtResource("1_ehqfi")
+script = ExtResource("1_j6adq")
 sprite = NodePath("Sprite2D")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=559184645]

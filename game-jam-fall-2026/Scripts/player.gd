@@ -7,6 +7,10 @@ class_name Player
 @export var jump: float = -400.0
 
 @export var jumped: bool = false
+
+@export var climbing: bool = false
+@export var climbing_direction: String = "left"
+
 @export var gliding: bool = false
 @export var gliding_strength: float = 0.8
 
@@ -39,15 +43,23 @@ func _physics_process(delta: float) -> void:
 	jumped = Input.is_action_just_pressed(input_up) and is_on_floor()
 	if jumped:
 		velocity.y = jump
-		
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
-	var direction := Input.get_axis(input_left, input_right)
-	if direction:
-		velocity.x = direction * speed
+	var horizontal_direction := Input.get_axis(input_left, input_right)
+
+	if horizontal_direction:
+		velocity.x = horizontal_direction * speed
 	else:
 		velocity.x = move_toward(velocity.x, 0, speed)
+
+	if climbing and not is_player_2:
+		var vertical_direction := Input.get_axis(input_up, input_down)
+
+		if vertical_direction:
+			velocity.y = vertical_direction * speed
+		else:
+			velocity.y = move_toward(velocity.y, 0, speed)
 
 	move_and_slide()
 

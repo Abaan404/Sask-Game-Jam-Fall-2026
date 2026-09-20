@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://csfo47hnrufte"]
+
+[ext_resource type="Texture2D" uid="uid://dyx0lyhhja2ga" path="res://Assets/icon.svg" id="1_706c5"]
+[ext_resource type="Script" uid="uid://cbe3hkik2b4ff" path="res://Scripts/ClimbableArea.gd" id="2_magkt"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sks3i"]
+resource_local_to_scene = true
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7nd2k"]
+
+[node name="ClimbableWall" type="Node2D" unique_id=764220690]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=328529267]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1167529734]
+shape = SubResource("RectangleShape2D_sks3i")
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D" unique_id=130183412]
+position = Vector2(1.4901161e-07, 3.5762787e-07)
+scale = Vector2(0.15625, 0.15625)
+texture = ExtResource("1_706c5")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=423207192]
+scale = Vector2(1.2, 0.9)
+script = ExtResource("2_magkt")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1404824410]
+shape = SubResource("RectangleShape2D_7nd2k")
+
+[connection signal="item_rect_changed" from="StaticBody2D/CollisionShape2D" to="." method="_on_collision_shape_2d_item_rect_changed"]
+[connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]
+[connection signal="body_exited" from="Area2D" to="Area2D" method="_on_body_exited"]

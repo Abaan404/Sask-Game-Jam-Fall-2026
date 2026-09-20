@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://o1fq8x1kg8ev"]
 
+[ext_resource type="PackedScene" uid="uid://csfo47hnrufte" path="res://Scenes/LevelElements/Walls/climbable_wall.tscn" id="1_a1spv"]
 [ext_resource type="PackedScene" uid="uid://doop567ni7qgo" path="res://Scenes/Entities/Player.tscn" id="1_sgftv"]
 [ext_resource type="Texture2D" uid="uid://dyx0lyhhja2ga" path="res://Assets/icon.svg" id="2_2u58p"]
 [ext_resource type="PackedScene" uid="uid://cojq50ed4fihc" path="res://Scenes/Abilities/GlidingLeaf.tscn" id="2_dv2c3"]
@@ -8,6 +9,10 @@
 size = Vector2(744, 20)
 
 [node name="TestScene" type="Node2D" unique_id=1565828327]
+
+[node name="ClimbableWall" parent="." unique_id=764220690 instance=ExtResource("1_a1spv")]
+position = Vector2(-202, -131)
+scale = Vector2(5, 5)
 
 [node name="Player" parent="." unique_id=1438121118 node_paths=PackedStringArray("abilities") instance=ExtResource("1_sgftv")]
 position = Vector2(20, -73)
