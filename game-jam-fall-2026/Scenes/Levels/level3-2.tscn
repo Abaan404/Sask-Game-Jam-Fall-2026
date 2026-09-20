@@ -9,34 +9,50 @@
 [ext_resource type="PackedScene" uid="uid://brr26kwdpn2ar" path="res://Scenes/LevelElements/SpawnAndKill/SpawnPoint.tscn" id="4_w3vwt"]
 [ext_resource type="PackedScene" uid="uid://k13k4b46kfae" path="res://Scenes/Abilities/TogglePlatforms.tscn" id="4_y2y56"]
 [ext_resource type="PackedScene" uid="uid://jcufhe47v2b3" path="res://Scenes/Abilities/wall_climb.tscn" id="5_voowj"]
+[ext_resource type="Texture2D" uid="uid://dyx0lyhhja2ga" path="res://Assets/icon.svg" id="5_y2y56"]
+[ext_resource type="PackedScene" uid="uid://cojq50ed4fihc" path="res://Scenes/Abilities/GlidingLeaf.tscn" id="8_voowj"]
+[ext_resource type="PackedScene" uid="uid://c2ancckms2v5" path="res://Scenes/Abilities/Root.tscn" id="9_mix0r"]
+[ext_resource type="PackedScene" uid="uid://csfo47hnrufte" path="res://Scenes/LevelElements/Walls/climbable_wall.tscn" id="12_2vgao"]
 
-[sub_resource type="Curve2D" id="Curve2D_k0w3k"]
+[sub_resource type="Curve2D" id="Curve2D_mix0r"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 478, -138.28574, 0, 0, 0, 0, 657.86285, -138.28574)
+"points": PackedVector2Array(0, 0, 0, 0, -152, 40, 0, 0, 0, 0, 168, 40)
 }
 point_count = 2
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_gxnxh"]
-size = Vector2(100, 20)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mix0r"]
+size = Vector2(200, 20)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_gutxs"]
-size = Vector2(240, 20)
+[sub_resource type="Curve2D" id="Curve2D_2vgao"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 104.90906, -134.54541, 0, 0, 0, 0, 104.90906, 153.16364)
+}
+point_count = 2
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_k0w3k"]
-size = Vector2(240, 20)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2vgao"]
+size = Vector2(300, 20)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oi0w5"]
 size = Vector2(3648, 20)
 
 [node name="Level3-2" type="Node2D" unique_id=264089790]
+position = Vector2(0, 96)
 
-[node name="Player2" parent="." unique_id=1438121118 node_paths=PackedStringArray("respawn_point") instance=ExtResource("1_3hhda")]
-position = Vector2(3224, -744)
+[node name="Player2" parent="." unique_id=1438121118 node_paths=PackedStringArray("respawn_point", "abilities") instance=ExtResource("1_3hhda")]
+position = Vector2(1984, -848)
 respawn_point = NodePath("../TerrainPlayer1/SpawnPoint2")
 is_player_2 = true
+abilities = [NodePath("PomogranateRoot"), NodePath("GlidingLeaf"), NodePath("WallClimb")]
+
+[node name="PomogranateRoot" parent="Player2" unique_id=821630594 instance=ExtResource("9_mix0r")]
+
+[node name="GlidingLeaf" parent="Player2" unique_id=2085603314 instance=ExtResource("8_voowj")]
+
+[node name="WallClimb" parent="Player2" unique_id=1718363903 instance=ExtResource("5_voowj")]
+position = Vector2(-687.7179, 71.029175)
 
 [node name="Player1" parent="." unique_id=1751370336 node_paths=PackedStringArray("respawn_point", "abilities") instance=ExtResource("1_3hhda")]
-position = Vector2(-360, 816)
+position = Vector2(-520, 1120)
 respawn_point = NodePath("../TerrainPlayer2/SpawnPoint")
 abilities = [NodePath("Pomogranate"), NodePath("TogglePlatforms"), NodePath("WallClimb")]
 
@@ -44,103 +60,164 @@ abilities = [NodePath("Pomogranate"), NodePath("TogglePlatforms"), NodePath("Wal
 
 [node name="TogglePlatforms" parent="Player1" unique_id=249809123 instance=ExtResource("4_y2y56")]
 
-[node name="WallClimb" parent="Player1" unique_id=1718363903 instance=ExtResource("5_voowj")]
+[node name="WallClimb" parent="Player1" unique_id=273946604 instance=ExtResource("5_voowj")]
 
 [node name="TerrainPlayer2" type="Node2D" parent="." unique_id=207343438]
 position = Vector2(448, 1656)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="TerrainPlayer2" unique_id=219534281]
-position = Vector2(-448, -192)
+position = Vector2(-1168, -824)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="TerrainPlayer2/StaticBody2D" unique_id=56335186]
-position = Vector2(-552.00006, -289)
 scale = Vector2(2.05664, 6.284545)
-polygon = PackedVector2Array(-101.60989, -77.82596, -101.60989, -15.291603, 24.809875, -15.291603, 24.809875, -77.82596)
+polygon = PackedVector2Array(-63.209885, -31.267178, -63.209885, 31.267178, 63.209885, 31.267178, 63.209885, -31.267178)
+
+[node name="Sprite2D" type="Sprite2D" parent="TerrainPlayer2/StaticBody2D" unique_id=209788002]
+position = Vector2(0, 138.00003)
+scale = Vector2(2.0625, 5.2187505)
+texture = ExtResource("5_y2y56")
 
 [node name="StaticBody2D3" type="StaticBody2D" parent="TerrainPlayer2" unique_id=1685752888]
-position = Vector2(-448, -192)
+position = Vector2(-1024, -360)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="TerrainPlayer2/StaticBody2D3" unique_id=2144589826]
-position = Vector2(-303.99997, 79.999985)
+position = Vector2(-2.1554129e-06, 9.479079e-07)
 scale = Vector2(2.892274, 3.8158941)
-polygon = PackedVector2Array(-101.60989, -77.82596, -101.60989, -15.291603, 24.809875, -15.291603, 24.89389, -35.640396)
+polygon = PackedVector2Array(-52.553802, 2.0964966, -52.508595, 22.51264, 73.91118, 22.51264, 73.99519, 2.163847)
+
+[node name="Sprite2D" type="Sprite2D" parent="TerrainPlayer2/StaticBody2D3" unique_id=1874602611]
+position = Vector2(27.999992, 44)
+scale = Vector2(2.8125, 0.5625)
+texture = ExtResource("5_y2y56")
 
 [node name="StaticBody2D2" type="StaticBody2D" parent="TerrainPlayer2" unique_id=1627259075]
-position = Vector2(-448, -192)
+position = Vector2(-600, -760)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="TerrainPlayer2/StaticBody2D2" unique_id=618272504]
-position = Vector2(-127.99997, -107.76787)
-scale = Vector2(0.58593726, 8.697781)
-polygon = PackedVector2Array(-104.296295, -78.16794, -104.29631, -31.787674, -104.296295, -14.167938, 23.703705, -14.167938, 23.703705, -78.16794)
+scale = Vector2(0.56450725, 6.2391105)
+polygon = PackedVector2Array(-63.999985, -32.000004, -64.000046, 14.38026, -63.999985, 31.999996, 64.000015, 31.999996, 64.000015, -32.000004)
 
-[node name="StaticBody2D4" type="StaticBody2D" parent="TerrainPlayer2" unique_id=627804514]
-position = Vector2(-448, -192)
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="TerrainPlayer2/StaticBody2D4" unique_id=866229154]
-position = Vector2(128.79103, 238.96477)
-scale = Vector2(3.4814568, 2.905897)
-polygon = PackedVector2Array(-104.296295, -78.16794, -104.29631, -31.787674, -104.296295, -14.167938, 23.703705, -14.167938, 23.703705, -78.16794)
+[node name="Sprite2D" type="Sprite2D" parent="TerrainPlayer2/StaticBody2D2" unique_id=1034806329]
+scale = Vector2(0.36718738, 2.9687495)
+texture = ExtResource("5_y2y56")
 
 [node name="Fruit" parent="TerrainPlayer2" unique_id=504196678 instance=ExtResource("3_w3vwt")]
-position = Vector2(-496, -264)
+position = Vector2(-624, -424)
+decay_time_ms = 10000.0
 
 [node name="Fruit2" parent="TerrainPlayer2" unique_id=1814028907 instance=ExtResource("3_w3vwt")]
-position = Vector2(-464, -376)
+position = Vector2(-425, -488)
+decay_time_ms = 10000.0
 
 [node name="SpawnPoint" parent="TerrainPlayer2" unique_id=1559900595 instance=ExtResource("4_w3vwt")]
-position = Vector2(-808, -840)
+position = Vector2(-968, -535.99994)
 
 [node name="MovingPlatformPath" parent="TerrainPlayer2" unique_id=1910268113 instance=ExtResource("4_gxnxh")]
-position = Vector2(-1502.3789, -142.74622)
-scale = Vector2(2.6242235, 2.3231158)
-curve = SubResource("Curve2D_k0w3k")
+position = Vector2(-248, -632)
+curve = SubResource("Curve2D_mix0r")
 
 [node name="PathFollow2D" parent="TerrainPlayer2/MovingPlatformPath" index="0" unique_id=744141348]
-position = Vector2(478, -138.28574)
+position = Vector2(-152, 40)
 rotation = 0.0
 
 [node name="MovingPlatform" parent="TerrainPlayer2/MovingPlatformPath" index="1" unique_id=914076835]
-position = Vector2(478.00003, -138.2857)
+position = Vector2(-152, 40)
 rotation = 0.0
 
 [node name="CollisionShape2D" parent="TerrainPlayer2/MovingPlatformPath/MovingPlatform" index="0" unique_id=969116513]
-shape = SubResource("RectangleShape2D_gxnxh")
+shape = SubResource("RectangleShape2D_mix0r")
 
-[node name="MovingPlatformPath2" parent="TerrainPlayer2" unique_id=1693751490 instance=ExtResource("4_gxnxh")]
-position = Vector2(-120, -896)
+[node name="Sprite2D" parent="TerrainPlayer2/MovingPlatformPath/MovingPlatform" index="1" unique_id=20352624]
+position = Vector2(-3, 0)
+scale = Vector2(1.5625, 0.125)
+texture = ExtResource("5_y2y56")
 
-[node name="CollisionShape2D" parent="TerrainPlayer2/MovingPlatformPath2/MovingPlatform" parent_id_path=PackedInt32Array(1693751490, 914076835) index="0" unique_id=969116513]
-shape = SubResource("RectangleShape2D_gutxs")
+[node name="MovingPlatformPath2" parent="TerrainPlayer2" unique_id=94577222 instance=ExtResource("4_gxnxh")]
+position = Vector2(-254.37836, -975.13043)
+scale = Vector2(0.5945946, 1.1956521)
+curve = SubResource("Curve2D_2vgao")
 
-[node name="MovingPlatformPath3" parent="TerrainPlayer2" unique_id=1256875942 instance=ExtResource("4_gxnxh")]
-position = Vector2(-256, -896)
+[node name="PathFollow2D" parent="TerrainPlayer2/MovingPlatformPath2" index="0" unique_id=744141348]
+position = Vector2(104.90906, -134.54541)
+rotation = 1.5707964
 
-[node name="CollisionShape2D" parent="TerrainPlayer2/MovingPlatformPath3/MovingPlatform" parent_id_path=PackedInt32Array(1256875942, 914076835) index="0" unique_id=969116513]
-shape = SubResource("RectangleShape2D_k0w3k")
+[node name="MovingPlatform" parent="TerrainPlayer2/MovingPlatformPath2" index="1" unique_id=914076835]
+position = Vector2(104.90906, -134.54541)
+rotation = 1.5707964
+scale = Vector2(0.99999994, 1)
+
+[node name="CollisionShape2D" parent="TerrainPlayer2/MovingPlatformPath2/MovingPlatform" index="0" unique_id=969116513]
+shape = SubResource("RectangleShape2D_2vgao")
+
+[node name="Sprite2D" parent="TerrainPlayer2/MovingPlatformPath2/MovingPlatform" index="1" unique_id=20352624]
+position = Vector2(2.1151028, -6.48641)
+scale = Vector2(2.1997113, 0.10134913)
+texture = ExtResource("5_y2y56")
+
+[node name="MovingPlatformPath3" parent="TerrainPlayer2" unique_id=1727159931 instance=ExtResource("4_gxnxh")]
+position = Vector2(-126.37836, -903.13043)
+scale = Vector2(0.5945946, 1.1956521)
+curve = SubResource("Curve2D_2vgao")
+
+[node name="PathFollow2D" parent="TerrainPlayer2/MovingPlatformPath3" index="0" unique_id=744141348]
+position = Vector2(104.90906, -134.54541)
+rotation = 1.5707964
+
+[node name="MovingPlatform" parent="TerrainPlayer2/MovingPlatformPath3" index="1" unique_id=914076835]
+position = Vector2(104.90906, -134.54541)
+rotation = 1.5707964
+scale = Vector2(0.99999994, 1)
+
+[node name="CollisionShape2D" parent="TerrainPlayer2/MovingPlatformPath3/MovingPlatform" index="0" unique_id=969116513]
+shape = SubResource("RectangleShape2D_2vgao")
+
+[node name="Sprite2D" parent="TerrainPlayer2/MovingPlatformPath3/MovingPlatform" index="1" unique_id=20352624]
+position = Vector2(-0.74391174, -1.5055188e-05)
+scale = Vector2(2.2262614, 0.20269904)
+texture = ExtResource("5_y2y56")
 
 [node name="TerrainPlayer1" type="Node2D" parent="." unique_id=1919191351]
-position = Vector2(2200, -400)
-
-[node name="StaticBody2D" type="StaticBody2D" parent="TerrainPlayer1" unique_id=1879700403]
-position = Vector2(-792, -368)
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="TerrainPlayer1/StaticBody2D" unique_id=1281813264]
-position = Vector2(2010.4617, 242.76517)
-scale = Vector2(5.571593, 1.5091786)
-polygon = PackedVector2Array(-101.60989, -77.82596, -101.60989, -15.291603, 24.809875, -15.291603, 24.809875, -77.82596)
-
-[node name="Root" parent="TerrainPlayer1/StaticBody2D" unique_id=657005184 node_paths=PackedStringArray("fruits") instance=ExtResource("4_gd754")]
-position = Vector2(1752, 72)
-fruits = [NodePath("../../../TerrainPlayer2/Fruit"), NodePath("../../../TerrainPlayer2/Fruit2")]
+position = Vector2(672, -520)
 
 [node name="SpawnPoint2" parent="TerrainPlayer1" unique_id=1923153325 instance=ExtResource("4_w3vwt")]
-position = Vector2(1024, -344)
+position = Vector2(1312, -344)
+
+[node name="Root" parent="TerrainPlayer1" unique_id=657005184 node_paths=PackedStringArray("fruits") instance=ExtResource("4_gd754")]
+position = Vector2(800, -224)
+fruits = [NodePath("../../TerrainPlayer2/Fruit"), NodePath("../../TerrainPlayer2/Fruit2")]
+
+[node name="StaticBody2D5" type="StaticBody2D" parent="TerrainPlayer1" unique_id=1677442824]
+position = Vector2(1352, -584)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="TerrainPlayer1/StaticBody2D5" unique_id=651560344]
+scale = Vector2(4.351, 3.636)
+polygon = PackedVector2Array(-63.999992, -32, -64.000015, 14.380264, -63.999992, 32, 64, 32, 64, -32)
+
+[node name="Sprite2D2" type="Sprite2D" parent="TerrainPlayer1/StaticBody2D5" unique_id=1077003385]
+position = Vector2(3.999918, -4.196167e-05)
+scale = Vector2(4.4374995, 1.7499998)
+texture = ExtResource("5_y2y56")
+
+[node name="StaticBody2D6" type="StaticBody2D" parent="TerrainPlayer1" unique_id=1677584459]
+position = Vector2(1248, -176)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="TerrainPlayer1/StaticBody2D6" unique_id=1257731491]
+scale = Vector2(4.261, 3.542)
+polygon = PackedVector2Array(-63.999992, -32, -64.000015, 14.380264, -63.999992, 32, 64, 32, 64, -32)
+
+[node name="Sprite2D2" type="Sprite2D" parent="TerrainPlayer1/StaticBody2D6" unique_id=552809066]
+position = Vector2(4.0000515, -1.9073486e-05)
+scale = Vector2(4.1875005, 1.7500001)
+texture = ExtResource("5_y2y56")
+
+[node name="ClimbableWall" parent="TerrainPlayer1" unique_id=764220690 instance=ExtResource("12_2vgao")]
+position = Vector2(656, -104)
+scale = Vector2(2.22, 10)
 
 [node name="DeathZone" parent="." unique_id=1579736506 instance=ExtResource("1_gd754")]
-position = Vector2(-1624, 488)
+position = Vector2(80, 1621)
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="DeathZone" unique_id=835678219]
-position = Vector2(1576, -480)
 shape = SubResource("RectangleShape2D_oi0w5")
 
 [editable path="TerrainPlayer2/MovingPlatformPath"]
