@@ -6,11 +6,13 @@ signal physics_done
 @export var camera_transform: RemoteTransform2D
 @export var respawn_point: Node2D
 
-@export var deccel: float = 10
-@export var speed: float = 300.0
+@export var accel: float = 25
+@export var deccel: float = 20
+@export var max_speed: float = 400.0
 @export var jump: float = -400.0
 
 var can_move: bool = true
+@export var can_climb: bool = false
 
 @export var jumped: bool = false
 
@@ -67,18 +69,18 @@ func _physics_process(delta: float) -> void:
 	var horizontal_direction := Input.get_axis(input_left, input_right)
 
 	if can_move:
-		if horizontal_direction:
-			velocity.x = horizontal_direction * speed
+		if horizontal_direction and velocity.x < max_speed:
+			velocity.x = move_toward(velocity.x, max_speed * horizontal_direction, accel)
 		else:
 			velocity.x = move_toward(velocity.x, 0, deccel)
 
-	if climbing and not is_player_2:
+	if climbing and can_climb:
 		var vertical_direction := Input.get_axis(input_up, input_down)
 
 		if vertical_direction:
-			velocity.y = vertical_direction * speed
+			velocity.y = vertical_direction * max_speed
 		else:
-			velocity.y = move_toward(velocity.y, 0, speed)
+			velocity.y = move_toward(velocity.y, 0, max_speed)
 
 	move_and_slide()
 

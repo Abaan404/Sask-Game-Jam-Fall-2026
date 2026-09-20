@@ -9,6 +9,12 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body is Player:
 		player_list.append(body)
 		
+		body.can_move = false
+		body.velocity = Vector2.ZERO
+		body.move_and_slide()
+		
+		body.physics_interpolation_mode = Node.PHYSICS_INTERPOLATION_MODE_OFF
+		
 		if player_list.size() > 1:
 			print("all players are in.")
 			

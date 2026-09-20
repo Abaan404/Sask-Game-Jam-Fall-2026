@@ -35,6 +35,9 @@ size = Vector2i(574, 648)
 render_target_update_mode = 4
 
 [node name="Camera1" type="Camera2D" parent="HBoxContainer/1/View1" unique_id=1990636007]
+zoom = Vector2(0.8, 0.8)
+position_smoothing_enabled = true
+position_smoothing_speed = 4.0
 
 [node name="Level Container" type="Node2D" parent="HBoxContainer/1/View1" unique_id=1848816721]
 script = ExtResource("2_1qg8b")
@@ -55,3 +58,6 @@ size = Vector2i(574, 648)
 render_target_update_mode = 4
 
 [node name="Camera2" type="Camera2D" parent="HBoxContainer/2/View2" unique_id=1349488191]
+zoom = Vector2(0.8, 0.8)
+position_smoothing_enabled = true
+position_smoothing_speed = 4.0

@@ -23,5 +23,3 @@ text = "Back
 "
 script = ExtResource("1_j2fmt")
 next_scene = "res://Scenes/HUD/Menus/main_menu.tscn"
-
-[connection signal="pressed" from="Back" to="Back" method="_on_pressed"]

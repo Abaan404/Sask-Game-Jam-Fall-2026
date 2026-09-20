@@ -14,6 +14,7 @@ wall_bounce = 1.25
 cooldown_time_ms = 0.35
 
 [node name="Area2D" type="Area2D" parent="." unique_id=34357070]
+position = Vector2(0, -16)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=501270802]
 shape = SubResource("RectangleShape2D_fyud8")
