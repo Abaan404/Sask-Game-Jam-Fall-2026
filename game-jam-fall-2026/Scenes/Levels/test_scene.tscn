@@ -1,10 +1,14 @@
 [gd_scene format=3 uid="uid://o1fq8x1kg8ev"]
 
+[ext_resource type="PackedScene" uid="uid://dd4mot3pqoi2u" path="res://Scenes/LevelElements/Pomogranates/Root.tscn" id="1_56hgn"]
 [ext_resource type="PackedScene" uid="uid://csfo47hnrufte" path="res://Scenes/LevelElements/Walls/climbable_wall.tscn" id="1_a1spv"]
 [ext_resource type="PackedScene" uid="uid://doop567ni7qgo" path="res://Scenes/Entities/Player.tscn" id="1_sgftv"]
 [ext_resource type="Texture2D" uid="uid://dyx0lyhhja2ga" path="res://Assets/icon.svg" id="2_2u58p"]
 [ext_resource type="PackedScene" uid="uid://cojq50ed4fihc" path="res://Scenes/Abilities/GlidingLeaf.tscn" id="2_dv2c3"]
 [ext_resource type="PackedScene" uid="uid://jcufhe47v2b3" path="res://Scenes/Abilities/wall_climb.tscn" id="3_a1spv"]
+[ext_resource type="PackedScene" uid="uid://cypwcxp35mjc0" path="res://Scenes/Abilities/Fruit.tscn" id="4_utwxg"]
+[ext_resource type="PackedScene" uid="uid://c2ancckms2v5" path="res://Scenes/Abilities/Root.tscn" id="6_56hgn"]
+[ext_resource type="PackedScene" uid="uid://bn6fb5xh6lbw1" path="res://Scenes/LevelElements/Pomogranates/Fruit.tscn" id="6_tgibm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vnn0b"]
 size = Vector2(744, 20)
@@ -14,20 +18,28 @@ size = Vector2(20, 386)
 
 [node name="TestScene" type="Node2D" unique_id=1565828327]
 
+[node name="Root" parent="." unique_id=657005184 node_paths=PackedStringArray("fruits") instance=ExtResource("1_56hgn")]
+position = Vector2(340, -39)
+fruits = [NodePath("../Fruit"), NodePath("../Fruit2"), NodePath("../Fruit3")]
+
 [node name="ClimbableWall" parent="." unique_id=764220690 instance=ExtResource("1_a1spv")]
-position = Vector2(-202, -131)
+position = Vector2(275.99997, -278)
 scale = Vector2(5, 5)
 
 [node name="Player" parent="." unique_id=1438121118 node_paths=PackedStringArray("abilities") instance=ExtResource("1_sgftv")]
-position = Vector2(20, -73)
-abilities = [NodePath("GlidingLeaf")]
+position = Vector2(-28, -72)
+abilities = [NodePath("GlidingLeaf"), NodePath("Pomogranate")]
+
+[node name="Pomogranate" parent="Player" unique_id=459060717 instance=ExtResource("4_utwxg")]
 
 [node name="GlidingLeaf" parent="Player" unique_id=2085603314 instance=ExtResource("2_dv2c3")]
 
 [node name="Player2" parent="." unique_id=2085434168 node_paths=PackedStringArray("abilities") instance=ExtResource("1_sgftv")]
 position = Vector2(112, -73)
 is_player_2 = true
-abilities = [NodePath("WallClimb")]
+abilities = [NodePath("WallClimb"), NodePath("PomogranateRoot")]
+
+[node name="PomogranateRoot" parent="Player2" unique_id=821630594 instance=ExtResource("6_56hgn")]
 
 [node name="WallClimb" parent="Player2" unique_id=1718363903 instance=ExtResource("3_a1spv")]
 cooldown_time_ms = 0.3
@@ -58,10 +70,19 @@ texture = ExtResource("2_2u58p")
 position = Vector2(-240, -120)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3" unique_id=1958122223]
-position = Vector2(0, -183)
+position = Vector2(4, -182)
 shape = SubResource("RectangleShape2D_yeiif")
 
 [node name="Sprite2D" type="Sprite2D" parent="StaticBody2D3" unique_id=1554276693]
-position = Vector2(-1.001358e-05, -183)
+position = Vector2(6, -187.99997)
 scale = Vector2(0.15624984, 3.0156248)
 texture = ExtResource("2_2u58p")
+
+[node name="Fruit" parent="." unique_id=504196678 instance=ExtResource("6_tgibm")]
+position = Vector2(218, -81)
+
+[node name="Fruit2" parent="." unique_id=1651678117 instance=ExtResource("6_tgibm")]
+position = Vector2(120, -184)
+
+[node name="Fruit3" parent="." unique_id=1296464935 instance=ExtResource("6_tgibm")]
+position = Vector2(108, -396)

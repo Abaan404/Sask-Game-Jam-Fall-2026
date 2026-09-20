@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://cypwcxp35mjc0"]
+
+[ext_resource type="Script" uid="uid://c58qvwpv1wn4" path="res://Scripts/Fruit.gd" id="1_aemyg"]
+
+[node name="Pomogranate" type="Node2D" unique_id=459060717]
+script = ExtResource("1_aemyg")

@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://bn6fb5xh6lbw1"]
+
+[ext_resource type="Script" uid="uid://bp6qh2k21iolg" path="res://Scenes/LevelElements/Pomogranates/Fruit.gd" id="1_01xs4"]
+[ext_resource type="Texture2D" uid="uid://dyx0lyhhja2ga" path="res://Assets/icon.svg" id="1_s7a1a"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_y3v4y"]
+radius = 20.0
+
+[node name="Fruit" type="Node2D" unique_id=504196678]
+script = ExtResource("1_01xs4")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=771716114]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=2032519310]
+shape = SubResource("CircleShape2D_y3v4y")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2126807074]
+position = Vector2(0, -3.8146973e-06)
+scale = Vector2(0.3125, 0.31250003)
+texture = ExtResource("1_s7a1a")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

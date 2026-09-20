@@ -18,7 +18,10 @@ var can_move: bool = true
 @export var gliding: bool = false
 @export var gliding_strength: float = 0.8
 
+@export var fruity: bool = false
+
 @export var is_player_2: bool 
+
 var input_up: String = "up"
 var input_down: String = "down"
 var input_left: String = "left"
@@ -44,7 +47,7 @@ func _physics_process(delta: float) -> void:
 			velocity.y *= gliding_strength
 
 	# Handle jump.
-	jumped = Input.is_action_just_pressed(input_up) and is_on_floor()
+	jumped = Input.is_action_just_pressed(input_up) and is_on_floor() or fruity
 	if jumped:
 		velocity.y = jump
 
@@ -67,7 +70,7 @@ func _physics_process(delta: float) -> void:
 			velocity.y = move_toward(velocity.y, 0, speed)
 
 	move_and_slide()
-	
+
 	physics_done.emit()
 
 func start_gliding():

@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://c2ancckms2v5"]
+
+[ext_resource type="Script" uid="uid://4coq4kpb63ly" path="res://Scripts/Root.gd" id="1_miekp"]
+
+[node name="PomogranateRoot" type="Node2D" unique_id=821630594]
+script = ExtResource("1_miekp")
