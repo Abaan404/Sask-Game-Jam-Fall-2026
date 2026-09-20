@@ -38,8 +38,10 @@ fruits = [NodePath("../Fruit"), NodePath("../Fruit2"), NodePath("../Fruit3")]
 position = Vector2(275.99997, -278)
 scale = Vector2(5, 5)
 
-[node name="Player" parent="." unique_id=1438121118 node_paths=PackedStringArray("abilities") instance=ExtResource("1_sgftv")]
+[node name="Player" parent="." unique_id=1438121118 node_paths=PackedStringArray("respawn_point", "abilities") instance=ExtResource("1_sgftv")]
 position = Vector2(-28, -72)
+respawn_point = NodePath("../SpawnPoint2")
+can_climb = true
 abilities = [NodePath("GlidingLeaf"), NodePath("Pomogranate")]
 
 [node name="Pomogranate" parent="Player" unique_id=459060717 instance=ExtResource("4_utwxg")]

@@ -7,5 +7,4 @@ func _ready() -> void:
 
 
 func _on_pressed() -> void:
-	print("f")
 	get_tree().change_scene_to_file(next_scene)

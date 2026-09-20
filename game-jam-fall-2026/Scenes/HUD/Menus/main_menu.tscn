@@ -37,6 +37,3 @@ text = "Credits
 "
 script = ExtResource("1_w18b7")
 next_scene = "res://Scenes/HUD/Menus/credits_menu.tscn"
-
-[connection signal="pressed" from="Play" to="Play" method="_on_pressed"]
-[connection signal="pressed" from="Credits" to="Credits" method="_on_pressed"]
