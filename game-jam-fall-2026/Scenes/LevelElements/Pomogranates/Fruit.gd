@@ -2,18 +2,21 @@ extends Node2D
 
 class_name Fruit
 
-@export var decay_time_ms: float = 3000.0
+@export var decay_time_ms: float = 2000.0
+@export var sprite: Sprite2D
 
 var decay_counter: float = 0.0
 var player: Player
 
 func _process(delta: float)-> void:
+	sprite.self_modulate.a = min(1.0, decay_counter/decay_time_ms)
 	decay_counter = max(0.0, decay_counter - delta * 1000.0)
 
 	if player:
 		player.fruity = decay_counter > 0.0
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
+	
 	if decay_counter <= 0.0:
 		return
 

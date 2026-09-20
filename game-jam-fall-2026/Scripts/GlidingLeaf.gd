@@ -21,8 +21,9 @@ func stop() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(_delta: float) -> void:
-	if not player.jumped and not player.climbing and Input.is_action_just_pressed("up"):
+	if not player.jumped and not player.climbing and Input.is_action_just_pressed(player.input_up):
 		toggle()
+		print("fdfd")
 
 	if player.is_on_floor() and !stopped:
 		stop()

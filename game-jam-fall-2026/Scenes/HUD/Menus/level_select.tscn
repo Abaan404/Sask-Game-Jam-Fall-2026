@@ -52,6 +52,7 @@ script = ExtResource("2_7c3he")
 next_scene = ExtResource("3_f1lhc")
 
 [node name="Button2" type="Button" parent="HBoxContainer/VBoxContainer" unique_id=1052550525]
+visible = false
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "Level 1-2"
@@ -61,11 +62,13 @@ layout_mode = 2
 theme_override_constants/separation = 36
 
 [node name="Button" type="Button" parent="HBoxContainer/VBoxContainer2" unique_id=370826977]
+visible = false
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "Level 2-1"
 
 [node name="Button2" type="Button" parent="HBoxContainer/VBoxContainer2" unique_id=136955602]
+visible = false
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "Level 2-2"
@@ -75,6 +78,7 @@ layout_mode = 2
 theme_override_constants/separation = 36
 
 [node name="Button" type="Button" parent="HBoxContainer/VBoxContainer3" unique_id=764359601]
+visible = false
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "Level 3-1"

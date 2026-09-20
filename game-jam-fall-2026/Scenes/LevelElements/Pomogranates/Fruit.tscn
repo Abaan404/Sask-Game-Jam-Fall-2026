@@ -1,23 +1,30 @@
 [gd_scene format=3 uid="uid://bn6fb5xh6lbw1"]
 
 [ext_resource type="Script" uid="uid://bp6qh2k21iolg" path="res://Scenes/LevelElements/Pomogranates/Fruit.gd" id="1_01xs4"]
-[ext_resource type="Texture2D" uid="uid://dyx0lyhhja2ga" path="res://Assets/icon.svg" id="1_s7a1a"]
+[ext_resource type="Texture2D" uid="uid://ba67nifi5ma3e" path="res://Assets/pomegranite.png" id="2_01xs4"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_y3v4y"]
-radius = 20.0
+radius = 32.0
 
-[node name="Fruit" type="Node2D" unique_id=504196678]
+[node name="Fruit" type="Node2D" unique_id=504196678 node_paths=PackedStringArray("sprite")]
 script = ExtResource("1_01xs4")
+sprite = NodePath("Sprite2D")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=771716114]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=2032519310]
 shape = SubResource("CircleShape2D_y3v4y")
 
+[node name="Sprite2D2" type="Sprite2D" parent="." unique_id=160326504]
+modulate = Color(0, 0, 0, 0.45882353)
+position = Vector2(0, -3.8146973e-06)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("2_01xs4")
+
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=2126807074]
 position = Vector2(0, -3.8146973e-06)
-scale = Vector2(0.3125, 0.31250003)
-texture = ExtResource("1_s7a1a")
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("2_01xs4")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

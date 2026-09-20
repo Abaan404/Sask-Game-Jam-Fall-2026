@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dd4mot3pqoi2u"]
 
 [ext_resource type="Script" uid="uid://b84q1w1ilbatn" path="res://Scenes/LevelElements/Pomogranates/Root.gd" id="1_jinth"]
-[ext_resource type="Texture2D" uid="uid://dyx0lyhhja2ga" path="res://Assets/icon.svg" id="2_fgoym"]
+[ext_resource type="Texture2D" uid="uid://ba67nifi5ma3e" path="res://Assets/pomegranite.png" id="2_jinth"]
 
 [sub_resource type="GDScript" id="GDScript_skdpc"]
 script/source = "extends Area2D
@@ -20,6 +20,7 @@ func _process(delta: float) -> void:
 "
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_oi0w5"]
+radius = 24.0
 
 [node name="Root" type="Node2D" unique_id=657005184]
 script = ExtResource("1_jinth")
@@ -30,10 +31,15 @@ script = SubResource("GDScript_skdpc")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=187116633]
 shape = SubResource("CircleShape2D_oi0w5")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1415452608]
+[node name="Node2D" type="Node2D" parent="." unique_id=1161273412]
+position = Vector2(0, 16)
+
+[node name="Sprite2D" type="Sprite2D" parent="Node2D" unique_id=1415452608]
+modulate = Color(0.98333335, 1, 0, 0.41568628)
 position = Vector2(0, -3.8146973e-06)
-scale = Vector2(0.3125, 0.31250003)
-texture = ExtResource("2_fgoym")
+rotation = 2.2078414
+scale = Vector2(0.24000199, 0.24000199)
+texture = ExtResource("2_jinth")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
