@@ -29,7 +29,22 @@ size = Vector2(240, 20)
 size = Vector2(3648, 20)
 
 [node name="Level3-2" type="Node2D" unique_id=264089790]
-position = Vector2(-336, -136)
+
+[node name="Player2" parent="." unique_id=1438121118 node_paths=PackedStringArray("respawn_point") instance=ExtResource("1_3hhda")]
+position = Vector2(3224, -744)
+respawn_point = NodePath("../TerrainPlayer1/SpawnPoint2")
+is_player_2 = true
+
+[node name="Player1" parent="." unique_id=1751370336 node_paths=PackedStringArray("respawn_point", "abilities") instance=ExtResource("1_3hhda")]
+position = Vector2(-360, 816)
+respawn_point = NodePath("../TerrainPlayer2/SpawnPoint")
+abilities = [NodePath("Pomogranate"), NodePath("TogglePlatforms"), NodePath("WallClimb")]
+
+[node name="Pomogranate" parent="Player1" unique_id=459060717 instance=ExtResource("3_6vxoa")]
+
+[node name="TogglePlatforms" parent="Player1" unique_id=249809123 instance=ExtResource("4_y2y56")]
+
+[node name="WallClimb" parent="Player1" unique_id=1718363903 instance=ExtResource("5_voowj")]
 
 [node name="TerrainPlayer2" type="Node2D" parent="." unique_id=207343438]
 position = Vector2(448, 1656)
@@ -66,16 +81,6 @@ position = Vector2(128.79103, 238.96477)
 scale = Vector2(3.4814568, 2.905897)
 polygon = PackedVector2Array(-104.296295, -78.16794, -104.29631, -31.787674, -104.296295, -14.167938, 23.703705, -14.167938, 23.703705, -78.16794)
 
-[node name="Player2" parent="TerrainPlayer2" unique_id=1751370336 node_paths=PackedStringArray("respawn_point") instance=ExtResource("1_3hhda")]
-position = Vector2(-808, -840)
-respawn_point = NodePath("../SpawnPoint")
-
-[node name="Pomogranate" parent="TerrainPlayer2/Player2" unique_id=459060717 instance=ExtResource("3_6vxoa")]
-
-[node name="TogglePlatforms" parent="TerrainPlayer2/Player2" unique_id=249809123 instance=ExtResource("4_y2y56")]
-
-[node name="WallClimb" parent="TerrainPlayer2/Player2" unique_id=1718363903 instance=ExtResource("5_voowj")]
-
 [node name="Fruit" parent="TerrainPlayer2" unique_id=504196678 instance=ExtResource("3_w3vwt")]
 position = Vector2(-496, -264)
 
@@ -95,7 +100,7 @@ position = Vector2(478, -138.28574)
 rotation = 0.0
 
 [node name="MovingPlatform" parent="TerrainPlayer2/MovingPlatformPath" index="1" unique_id=914076835]
-position = Vector2(478, -138.28574)
+position = Vector2(478.00003, -138.2857)
 rotation = 0.0
 
 [node name="CollisionShape2D" parent="TerrainPlayer2/MovingPlatformPath/MovingPlatform" index="0" unique_id=969116513]
@@ -104,33 +109,17 @@ shape = SubResource("RectangleShape2D_gxnxh")
 [node name="MovingPlatformPath2" parent="TerrainPlayer2" unique_id=1693751490 instance=ExtResource("4_gxnxh")]
 position = Vector2(-120, -896)
 
-[node name="PathFollow2D" parent="TerrainPlayer2/MovingPlatformPath2" index="0" unique_id=744141348]
-position = Vector2(448, 160)
-
-[node name="MovingPlatform" parent="TerrainPlayer2/MovingPlatformPath2" index="1" unique_id=914076835]
-position = Vector2(448, 160)
-
-[node name="CollisionShape2D" parent="TerrainPlayer2/MovingPlatformPath2/MovingPlatform" index="0" unique_id=969116513]
+[node name="CollisionShape2D" parent="TerrainPlayer2/MovingPlatformPath2/MovingPlatform" parent_id_path=PackedInt32Array(1693751490, 914076835) index="0" unique_id=969116513]
 shape = SubResource("RectangleShape2D_gutxs")
 
 [node name="MovingPlatformPath3" parent="TerrainPlayer2" unique_id=1256875942 instance=ExtResource("4_gxnxh")]
 position = Vector2(-256, -896)
 
-[node name="PathFollow2D" parent="TerrainPlayer2/MovingPlatformPath3" index="0" unique_id=744141348]
-position = Vector2(448, 160)
-
-[node name="MovingPlatform" parent="TerrainPlayer2/MovingPlatformPath3" index="1" unique_id=914076835]
-position = Vector2(448, 160)
-
-[node name="CollisionShape2D" parent="TerrainPlayer2/MovingPlatformPath3/MovingPlatform" index="0" unique_id=969116513]
+[node name="CollisionShape2D" parent="TerrainPlayer2/MovingPlatformPath3/MovingPlatform" parent_id_path=PackedInt32Array(1256875942, 914076835) index="0" unique_id=969116513]
 shape = SubResource("RectangleShape2D_k0w3k")
 
 [node name="TerrainPlayer1" type="Node2D" parent="." unique_id=1919191351]
 position = Vector2(2200, -400)
-
-[node name="Player" parent="TerrainPlayer1" unique_id=1438121118 node_paths=PackedStringArray("respawn_point") instance=ExtResource("1_3hhda")]
-position = Vector2(1024, -344)
-respawn_point = NodePath("../SpawnPoint2")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="TerrainPlayer1" unique_id=1879700403]
 position = Vector2(-792, -368)
