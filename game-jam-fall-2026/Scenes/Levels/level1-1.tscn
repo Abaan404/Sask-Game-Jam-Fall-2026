@@ -1,3 +1,22 @@
 [gd_scene format=3 uid="uid://dobybr281q84l"]
 
-[node name="Level11" type="Node2D" unique_id=2104058432]
+[ext_resource type="PackedScene" uid="uid://c6cm6gftjmnjt" path="res://Scenes/LevelElements/End/LevelEnder.tscn" id="1_j6i6y"]
+[ext_resource type="PackedScene" uid="uid://doop567ni7qgo" path="res://Scenes/Entities/Player.tscn" id="2_r53e0"]
+
+[node name="Level1-1" type="Node2D" unique_id=2104058432]
+
+[node name="LevelEnder" parent="." unique_id=936052491 instance=ExtResource("1_j6i6y")]
+
+[node name="Terrain" type="Node2D" parent="." unique_id=815986150]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Terrain" unique_id=778996797]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Terrain/StaticBody2D" unique_id=194264504]
+polygon = PackedVector2Array(256, 64, 256, 0, 320, 0, 320, 384, -320, 384, -320, 0, -256, 0, -256, 64)
+
+[node name="Player" parent="." unique_id=1438121118 instance=ExtResource("2_r53e0")]
+position = Vector2(-288, -24)
+
+[node name="Player2" parent="." unique_id=497013982 instance=ExtResource("2_r53e0")]
+position = Vector2(288, -24)
+is_player_2 = true

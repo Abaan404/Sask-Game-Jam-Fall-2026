@@ -9,6 +9,8 @@
 [ext_resource type="PackedScene" uid="uid://ctxkbre0t5vcv" path="res://Scenes/LevelElements/MovingPlatform/moving_platform.tscn" id="6_tgibm"]
 [ext_resource type="PackedScene" uid="uid://c6cm6gftjmnjt" path="res://Scenes/LevelElements/End/LevelEnder.tscn" id="8_utwxg"]
 [ext_resource type="PackedScene" uid="uid://dobybr281q84l" path="res://Scenes/Levels/level1-1.tscn" id="9_56hgn"]
+[ext_resource type="PackedScene" uid="uid://dbunq7b5nb518" path="res://Scenes/LevelElements/SpawnAndKill/death_zone.tscn" id="10_shcqj"]
+[ext_resource type="PackedScene" uid="uid://brr26kwdpn2ar" path="res://Scenes/LevelElements/SpawnAndKill/SpawnPoint.tscn" id="11_4kqls"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vnn0b"]
 size = Vector2(744, 20)
@@ -19,20 +21,25 @@ size = Vector2(20, 386)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nj3bv"]
 size = Vector2(128, 128)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wt7xm"]
+size = Vector2(1408, 20)
+
 [node name="TestScene" type="Node2D" unique_id=1565828327]
 
 [node name="ClimbableWall" parent="." unique_id=764220690 instance=ExtResource("1_a1spv")]
 position = Vector2(-202, -131)
 scale = Vector2(5, 5)
 
-[node name="Player" parent="." unique_id=1438121118 node_paths=PackedStringArray("abilities") instance=ExtResource("1_sgftv")]
+[node name="Player" parent="." unique_id=1438121118 node_paths=PackedStringArray("respawn_point", "abilities") instance=ExtResource("1_sgftv")]
 position = Vector2(20, -73)
+respawn_point = NodePath("../SpawnPoint")
 abilities = [NodePath("GlidingLeaf")]
 
 [node name="GlidingLeaf" parent="Player" unique_id=2085603314 instance=ExtResource("2_dv2c3")]
 
-[node name="Player2" parent="." unique_id=2085434168 node_paths=PackedStringArray("abilities") instance=ExtResource("1_sgftv")]
+[node name="Player2" parent="." unique_id=2085434168 node_paths=PackedStringArray("respawn_point", "abilities") instance=ExtResource("1_sgftv")]
 position = Vector2(112, -73)
+respawn_point = NodePath("../SpawnPoint2")
 is_player_2 = true
 abilities = [NodePath("WallClimb"), NodePath("TogglePlatforms")]
 
@@ -88,4 +95,17 @@ texture = ExtResource("2_2u58p")
 position = Vector2(448, -336)
 next_level = ExtResource("9_56hgn")
 
+[node name="DeathZone" parent="." unique_id=274419522 instance=ExtResource("10_shcqj")]
+
+[node name="CollisionShape2D" parent="DeathZone" index="0" unique_id=716609040]
+position = Vector2(0, 232)
+shape = SubResource("RectangleShape2D_wt7xm")
+
+[node name="SpawnPoint" parent="." unique_id=1559900595 instance=ExtResource("11_4kqls")]
+position = Vector2(-128, -16)
+
+[node name="SpawnPoint2" parent="." unique_id=372896031 instance=ExtResource("11_4kqls")]
+position = Vector2(216, -24)
+
 [editable path="MovingPlatformPath"]
+[editable path="DeathZone"]

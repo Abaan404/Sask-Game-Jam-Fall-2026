@@ -4,6 +4,7 @@ class_name Player
 signal physics_done
 
 @export var camera_transform: RemoteTransform2D
+@export var respawn_point: Node2D
 
 @export var speed: float = 300.0
 @export var jump: float = -400.0
@@ -34,6 +35,15 @@ func _ready() -> void:
 		input_down += "2"
 		input_left += "2"
 		input_right +="2"
+
+
+func _process(delta: float) -> void:
+	if camera_transform.remote_path == NodePath(""):
+		if is_player_2 and SignalHub.cam2 != null:
+			camera_transform.remote_path = SignalHub.cam2.get_path()
+		elif SignalHub.cam1 != null:
+			camera_transform.remote_path = SignalHub.cam1.get_path()
+
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
@@ -75,3 +85,6 @@ func start_gliding():
 
 func stop_gliding():
 	gliding = false
+	
+func respawn():
+	position = respawn_point.position + Vector2(0, -32)

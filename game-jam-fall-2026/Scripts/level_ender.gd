@@ -12,9 +12,8 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		if player_list.size() > 1:
 			print("all players are in.")
 			
-			var level_node: Node2D = get_parent().get_parent()
-			var next_level_instance = next_level.instantiate()
-			level_node.add_child(next_level_instance)
+			var level_node: level_container = get_parent().get_parent()
+			level_node.load_new_level.emit(next_level)
 			get_parent().queue_free()
  
 
