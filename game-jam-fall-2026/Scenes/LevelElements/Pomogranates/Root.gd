@@ -1,4 +1,4 @@
-extends Ability
+extends Node2D
 
 class_name Root
 
@@ -13,7 +13,7 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 	for ability in player.abilities:
 		if ability is RootAbility:
 			for fruit in fruits:
-				fruit.active = true
+				fruit.decay_counter = fruit.decay_time_ms
 			break
 
 func _on_area_2d_body_exited(body: Node2D) -> void:
@@ -25,5 +25,5 @@ func _on_area_2d_body_exited(body: Node2D) -> void:
 	for ability in player.abilities:
 		if ability is RootAbility:
 			for fruit in fruits:
-				fruit.active = false
+				fruit.decay_counter = 0.0
 			break
