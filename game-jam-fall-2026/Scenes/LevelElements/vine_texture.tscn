@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://ka7qfxbhwmm6"]
+
+[ext_resource type="Texture2D" uid="uid://b63e6wk3uwiiy" path="res://Assets/Placeholder_texture.png" id="1_ysucp"]
+
+[node name="Sprite2D" type="Sprite2D" unique_id=1641071136]
+modulate = Color(0.24287996, 0.66, 0.13859999, 0.47058824)
+scale = Vector2(2.0468752, 5)
+texture = ExtResource("1_ysucp")

@@ -1,11 +1,16 @@
 [gd_scene format=3 uid="uid://dbunq7b5nb518"]
 
 [ext_resource type="Script" uid="uid://den0u3mghn2q7" path="res://Scripts/death_zone.gd" id="1_530cy"]
+[ext_resource type="Texture2D" uid="uid://b63e6wk3uwiiy" path="res://Assets/Placeholder_texture.png" id="2_k7f2k"]
 
 [node name="DeathZone" type="Area2D" unique_id=274419522]
 script = ExtResource("1_530cy")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=716609040]
-debug_color = Color(0.92, 0.21160002, 0.21160002, 0.41960785)
+debug_color = Color(0.832032, 0.0007533425, 0.8673722, 0.41960785)
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1952940122]
+modulate = Color(1, 0.24000001, 0.24000001, 0.40784314)
+texture = ExtResource("2_k7f2k")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
