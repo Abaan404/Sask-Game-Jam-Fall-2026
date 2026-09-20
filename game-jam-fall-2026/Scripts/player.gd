@@ -6,6 +6,7 @@ signal physics_done
 @export var camera_transform: RemoteTransform2D
 @export var respawn_point: Node2D
 
+@export var deccel: float = 10
 @export var speed: float = 300.0
 @export var jump: float = -400.0
 
@@ -69,7 +70,7 @@ func _physics_process(delta: float) -> void:
 		if horizontal_direction:
 			velocity.x = horizontal_direction * speed
 		else:
-			velocity.x = move_toward(velocity.x, 0, speed)
+			velocity.x = move_toward(velocity.x, 0, deccel)
 
 	if climbing and not is_player_2:
 		var vertical_direction := Input.get_axis(input_up, input_down)
