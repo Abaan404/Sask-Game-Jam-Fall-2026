@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://mmenq3rdh15b"
+path="res://.godot/imported/Dash, my Muse.wav-6198c3bf2f33199c09e8e10c32ca56e1.sample"
+
+[deps]
+
+source_file="res://Assets/Dash, my Muse.wav"
+dest_files=["res://.godot/imported/Dash, my Muse.wav-6198c3bf2f33199c09e8e10c32ca56e1.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=2
+edit/loop_begin=62269
+edit/loop_end=2062116
+compress/mode=2

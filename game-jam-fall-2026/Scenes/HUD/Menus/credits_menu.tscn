@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://cly2oxyurepfr"]
 
+[ext_resource type="Script" uid="uid://bmldtmrnbjn1e" path="res://Scenes/HUD/Menus/credits_menu.gd" id="1_cgbsf"]
 [ext_resource type="Script" uid="uid://dnt6ivnshj8vv" path="res://Scripts/menu_button.gd" id="1_j2fmt"]
 
 [node name="CreditsMenu" type="Control" unique_id=366103700]
@@ -9,6 +10,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_cgbsf")
 
 [node name="Back" type="Button" parent="." unique_id=775594801]
 layout_mode = 0
