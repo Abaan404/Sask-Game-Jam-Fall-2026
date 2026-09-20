@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://c0lwv364fmssr"
+path="res://.godot/imported/Dash, my Muse.mp3-4363919573876b979337bd8352b88b39.mp3str"
+
+[deps]
+
+source_file="res://Assets/Dash, my Muse.mp3"
+dest_files=["res://.godot/imported/Dash, my Muse.mp3-4363919573876b979337bd8352b88b39.mp3str"]
+
+[params]
+
+loop=true
+loop_offset=1.412
+bpm=0
+beat_count=0
+bar_beats=4

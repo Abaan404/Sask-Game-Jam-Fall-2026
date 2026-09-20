@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://c5r5s1p4aded7"]
 
 [ext_resource type="Script" uid="uid://dnt6ivnshj8vv" path="res://Scripts/menu_button.gd" id="1_7c3he"]
+[ext_resource type="Script" uid="uid://b6mp7unnl81rv" path="res://Scenes/HUD/Menus/level_select.gd" id="1_8opcr"]
 [ext_resource type="Script" uid="uid://csd1egbilfuqe" path="res://Scripts/level_button.gd" id="2_7c3he"]
 [ext_resource type="PackedScene" uid="uid://dobybr281q84l" path="res://Scenes/Levels/level1-1.tscn" id="3_f1lhc"]
 [ext_resource type="PackedScene" uid="uid://ent52kxlw402" path="res://Scenes/Levels/level3-2.tscn" id="4_52g27"]
@@ -12,6 +13,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_8opcr")
 
 [node name="Back" type="Button" parent="." unique_id=1653655912]
 layout_mode = 0
