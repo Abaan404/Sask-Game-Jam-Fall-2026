@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://c5r5s1p4aded7"]
+
+[ext_resource type="Script" uid="uid://dnt6ivnshj8vv" path="res://Scripts/menu_button.gd" id="1_7c3he"]
+
+[node name="LevelSelect" type="Control" unique_id=643628324]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Back" type="Button" parent="." unique_id=1653655912]
+layout_mode = 0
+offset_left = 82.0
+offset_top = 582.0
+offset_right = 200.0
+offset_bottom = 635.0
+offset_transform_enabled = true
+offset_transform_position_ratio = Vector2(-0.5, 0)
+theme_override_font_sizes/font_size = 24
+text = "Back
+"
+script = ExtResource("1_7c3he")
+next_scene = "res://Scenes/HUD/Menus/main_menu.tscn"
+
+[connection signal="pressed" from="Back" to="Back" method="_on_pressed"]
