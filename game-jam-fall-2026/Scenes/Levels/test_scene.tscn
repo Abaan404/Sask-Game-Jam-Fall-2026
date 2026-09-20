@@ -5,12 +5,17 @@
 [ext_resource type="Texture2D" uid="uid://dyx0lyhhja2ga" path="res://Assets/icon.svg" id="2_2u58p"]
 [ext_resource type="PackedScene" uid="uid://cojq50ed4fihc" path="res://Scenes/Abilities/GlidingLeaf.tscn" id="2_dv2c3"]
 [ext_resource type="PackedScene" uid="uid://jcufhe47v2b3" path="res://Scenes/Abilities/wall_climb.tscn" id="3_a1spv"]
+[ext_resource type="PackedScene" uid="uid://k13k4b46kfae" path="res://Scenes/Abilities/TogglePlatforms.tscn" id="5_nlmfl"]
+[ext_resource type="PackedScene" uid="uid://ctxkbre0t5vcv" path="res://Scenes/LevelElements/MovingPlatform/moving_platform.tscn" id="6_tgibm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vnn0b"]
 size = Vector2(744, 20)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yeiif"]
 size = Vector2(20, 386)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nj3bv"]
+size = Vector2(128, 128)
 
 [node name="TestScene" type="Node2D" unique_id=1565828327]
 
@@ -27,10 +32,12 @@ abilities = [NodePath("GlidingLeaf")]
 [node name="Player2" parent="." unique_id=2085434168 node_paths=PackedStringArray("abilities") instance=ExtResource("1_sgftv")]
 position = Vector2(112, -73)
 is_player_2 = true
-abilities = [NodePath("WallClimb")]
+abilities = [NodePath("WallClimb"), NodePath("TogglePlatforms")]
 
 [node name="WallClimb" parent="Player2" unique_id=1718363903 instance=ExtResource("3_a1spv")]
-cooldown_time_ms = 0.3
+cooldown_time_ms = 0.4
+
+[node name="TogglePlatforms" parent="Player2" unique_id=249809123 instance=ExtResource("5_nlmfl")]
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1178217182]
 
@@ -65,3 +72,14 @@ shape = SubResource("RectangleShape2D_yeiif")
 position = Vector2(-1.001358e-05, -183)
 scale = Vector2(0.15624984, 3.0156248)
 texture = ExtResource("2_2u58p")
+
+[node name="MovingPlatformPath" parent="." unique_id=1910268113 instance=ExtResource("6_tgibm")]
+position = Vector2(0, 88)
+
+[node name="CollisionShape2D" parent="MovingPlatformPath/MovingPlatform" parent_id_path=PackedInt32Array(1910268113, 914076835) index="0" unique_id=969116513]
+shape = SubResource("RectangleShape2D_nj3bv")
+
+[node name="Sprite2D" parent="MovingPlatformPath/MovingPlatform" parent_id_path=PackedInt32Array(1910268113, 914076835) index="1" unique_id=20352624]
+texture = ExtResource("2_2u58p")
+
+[editable path="MovingPlatformPath"]

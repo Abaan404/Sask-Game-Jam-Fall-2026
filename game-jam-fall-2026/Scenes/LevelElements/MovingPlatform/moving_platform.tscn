@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://ctxkbre0t5vcv"]
+
+[ext_resource type="Script" uid="uid://bixu7ifig33sr" path="res://Scripts/moving_platform.gd" id="1_nj3bv"]
+
+[sub_resource type="Curve2D" id="Curve2D_0gbmm"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 448, 0, 0, 0, 0, 0, 448, -352)
+}
+point_count = 2
+
+[node name="MovingPlatformPath" type="Path2D" unique_id=1910268113 node_paths=PackedStringArray("pathfollow", "moving_platform")]
+curve = SubResource("Curve2D_0gbmm")
+script = ExtResource("1_nj3bv")
+pathfollow = NodePath("PathFollow2D")
+moving_platform = NodePath("MovingPlatform")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="." unique_id=744141348]
+position = Vector2(448, 0)
+rotation = -1.5707964
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="PathFollow2D" unique_id=482015945]
+remote_path = NodePath("../../MovingPlatform")
+
+[node name="MovingPlatform" type="AnimatableBody2D" parent="." unique_id=914076835]
+position = Vector2(448, 0)
+rotation = -1.5707964
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MovingPlatform" unique_id=969116513]
+
+[node name="Sprite2D" type="Sprite2D" parent="MovingPlatform" unique_id=20352624]

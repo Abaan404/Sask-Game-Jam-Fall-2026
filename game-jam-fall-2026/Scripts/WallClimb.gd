@@ -3,6 +3,7 @@ class_name Wallclimb
 
 
 @export var friction_area: Area2D
+@export var friction: float = 0.8
 @export var deccel: float = 0.2
 @export var wall_bounce: float = 1.5
 
@@ -14,11 +15,12 @@ var jump_dir: int = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	pass
 
 
 func _physics_process(delta: float) -> void:
 	if !player.is_on_floor() and is_sliding:
+		player.gliding_strength = friction
 		player.gliding = true
 	else:
 		player.gliding = false
