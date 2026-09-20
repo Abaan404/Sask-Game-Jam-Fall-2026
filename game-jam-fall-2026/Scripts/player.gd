@@ -1,10 +1,14 @@
 extends CharacterBody2D
 class_name Player
 
+signal physics_done
+
 @export var camera_transform: RemoteTransform2D
 
 @export var speed: float = 300.0
 @export var jump: float = -400.0
+
+var can_move: bool = true
 
 @export var jumped: bool = false
 
@@ -48,10 +52,11 @@ func _physics_process(delta: float) -> void:
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var horizontal_direction := Input.get_axis(input_left, input_right)
 
-	if horizontal_direction:
-		velocity.x = horizontal_direction * speed
-	else:
-		velocity.x = move_toward(velocity.x, 0, speed)
+	if can_move:
+		if horizontal_direction:
+			velocity.x = horizontal_direction * speed
+		else:
+			velocity.x = move_toward(velocity.x, 0, speed)
 
 	if climbing and not is_player_2:
 		var vertical_direction := Input.get_axis(input_up, input_down)
@@ -62,6 +67,8 @@ func _physics_process(delta: float) -> void:
 			velocity.y = move_toward(velocity.y, 0, speed)
 
 	move_and_slide()
+	
+	physics_done.emit()
 
 func start_gliding():
 	gliding = true

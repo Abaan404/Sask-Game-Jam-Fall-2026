@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://jcufhe47v2b3"]
+
+[ext_resource type="Script" uid="uid://cy1tcmqbl16xp" path="res://Scripts/WallClimb.gd" id="1_fyud8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fyud8"]
+size = Vector2(50, 48)
+
+[node name="WallClimb" type="Node2D" unique_id=1718363903 node_paths=PackedStringArray("friction_area")]
+script = ExtResource("1_fyud8")
+friction_area = NodePath("Area2D")
+deccel = 0.0
+wall_bounce = 1.25
+cooldown_time_ms = 0.25
+
+[node name="Area2D" type="Area2D" parent="." unique_id=34357070]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=501270802]
+shape = SubResource("RectangleShape2D_fyud8")
+debug_color = Color(0.35312748, 0.61262715, 0.264221, 0.41960785)
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
